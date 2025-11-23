@@ -5,25 +5,11 @@ import Link from "next/link"
 
 const projects = [
   {
-    id: "design-system",
-    title: "Design System",
-    description: "Comprehensive component library with accessibility at its core",
-    tech: ["React", "TypeScript", "Tailwind"],
-    image: "/design-system-interface.jpg",
-  },
-  {
     id: "ecommerce-platform",
     title: "E-Commerce Platform",
     description: "Full-stack marketplace with real-time inventory management",
     tech: ["Next.js", "PostgreSQL", "Stripe"],
     image: "/ecommerce-dashboard.png",
-  },
-  {
-    id: "analytics-dashboard",
-    title: "Analytics Dashboard",
-    description: "Real-time data visualization and reporting interface",
-    tech: ["React", "D3.js", "Node.js"],
-    image: "/analytics-dashboard-charts.png",
   },
   {
     id: "mobile-app",
@@ -34,12 +20,21 @@ const projects = [
   },
 ]
 
+const blenderProjects = [
+  {
+    id: "isometric-room",
+    title: "3D Isometric Room",
+    description: "A detailed isometric room scene with lighting and textures",
+    image: "/3d-isometric-room.jpg",
+  },
+]
+
 export default function Projects() {
   return (
     <div className="min-h-screen flex flex-col">
       <Header />
       <main className="flex-1 container-max py-24">
-        <div className="space-y-12">
+        <div className="space-y-20">
           {/* Header */}
           <div className="space-y-4">
             <h1 className="text-5xl md:text-6xl font-mono font-bold">Projects</h1>
@@ -48,37 +43,66 @@ export default function Projects() {
             </p>
           </div>
 
-          {/* Projects Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {projects.map((project) => (
-              <Link key={project.id} href={`/projects/${project.id}`}>
-                <Card className="group cursor-pointer border border-border hover:border-foreground/50 transition-all duration-200 overflow-hidden rounded-2xl">
-                  <div className="aspect-video bg-muted overflow-hidden">
-                    <img
-                      src={project.image || "/placeholder.svg"}
-                      alt={project.title}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                    />
-                  </div>
-                  <div className="p-6 space-y-4">
-                    <div>
-                      <h3 className="text-xl font-bold mb-2">{project.title}</h3>
-                      <p className="text-sm text-muted-foreground">{project.description}</p>
+          {/* Web Projects Section */}
+          <div className="space-y-8">
+            <h2 className="text-3xl md:text-4xl font-bold">Web Projects</h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6">
+              {projects.map((project) => (
+                <Link key={project.id} href={`/projects/${project.id}`}>
+                  <Card className="group cursor-pointer border border-border hover:border-foreground/50 transition-all duration-200 overflow-hidden rounded-2xl h-full">
+                    <div className="aspect-video bg-muted overflow-hidden">
+                      <img
+                        src={project.image || "/placeholder.svg"}
+                        alt={project.title}
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                      />
                     </div>
-                    <div className="flex flex-wrap gap-2">
-                      {project.tech.map((tech) => (
-                        <span
-                          key={tech}
-                          className="text-xs px-3 py-1 bg-muted text-foreground rounded-full border border-border"
-                        >
-                          {tech}
-                        </span>
-                      ))}
+                    <div className="p-6 space-y-4">
+                      <div>
+                        <h3 className="text-xl font-bold mb-2">{project.title}</h3>
+                        <p className="text-sm text-muted-foreground">{project.description}</p>
+                      </div>
+                      <div className="flex flex-wrap gap-2">
+                        {project.tech.map((tech) => (
+                          <span
+                            key={tech}
+                            className="text-xs px-3 py-1 bg-muted text-foreground rounded-full border border-border"
+                          >
+                            {tech}
+                          </span>
+                        ))}
+                      </div>
                     </div>
-                  </div>
-                </Card>
-              </Link>
-            ))}
+                  </Card>
+                </Link>
+              ))}
+            </div>
+          </div>
+
+          {/* 3D Projects Section */}
+          <div className="space-y-8">
+            <h2 className="text-3xl md:text-4xl font-bold">3D Projects</h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6">
+              {blenderProjects.map((project) => (
+                <Link key={project.id} href={`/projects/${project.id}`}>
+                  <Card className="group cursor-pointer border border-border hover:border-foreground/50 transition-all duration-200 overflow-hidden rounded-2xl h-full">
+                    <div className="aspect-video bg-muted overflow-hidden">
+                      <img
+                        src={project.image || "/placeholder.svg"}
+                        alt={project.title}
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                      />
+                    </div>
+                    <div className="p-6 space-y-4">
+                      <div>
+                        <h3 className="text-xl font-bold mb-2">{project.title}</h3>
+                        <p className="text-sm text-muted-foreground">{project.description}</p>
+                      </div>
+                    </div>
+                  </Card>
+                </Link>
+              ))}
+            </div>
           </div>
         </div>
       </main>

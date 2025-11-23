@@ -4,19 +4,6 @@ import Footer from "@/components/footer"
 import Link from "next/link"
 
 const projectDetails: Record<string, any> = {
-  "design-system": {
-    title: "Design System",
-    tagline: "Comprehensive component library with accessibility at its core",
-    problem: "Teams were building components inconsistently, leading to accessibility issues and design debt.",
-    solution:
-      "Created a unified design system with 50+ accessible components, comprehensive documentation, and Storybook integration.",
-    role: "Lead Designer & Developer",
-    tech: ["React", "TypeScript", "Tailwind CSS", "Storybook", "Figma"],
-    image: "/design-system-interface.jpg",
-    gallery: ["/component-library.png", "/design-tokens.jpg", "/accessibility-guidelines.jpg"],
-    liveUrl: "#",
-    githubUrl: "#",
-  },
   "ecommerce-platform": {
     title: "E-Commerce Platform",
     tagline: "Full-stack marketplace with real-time inventory management",
@@ -29,18 +16,7 @@ const projectDetails: Record<string, any> = {
     gallery: ["/product-listing.jpg", "/checkout-flow.jpg", "/modern-admin-dashboard.png"],
     liveUrl: "#",
     githubUrl: "#",
-  },
-  "analytics-dashboard": {
-    title: "Analytics Dashboard",
-    tagline: "Real-time data visualization and reporting interface",
-    problem: "Data was scattered across multiple tools, making it difficult to get actionable insights.",
-    solution: "Unified analytics platform with real-time dashboards, custom reports, and predictive analytics.",
-    role: "Frontend Engineer",
-    tech: ["React", "D3.js", "Node.js", "PostgreSQL", "WebSocket"],
-    image: "/analytics-dashboard.png",
-    gallery: ["/dashboard-overview.png", "/data-visualization-abstract.png", "/report-builder-interface.png"],
-    liveUrl: "#",
-    githubUrl: "#",
+    type: "web",
   },
   "mobile-app": {
     title: "Mobile App",
@@ -53,6 +29,17 @@ const projectDetails: Record<string, any> = {
     gallery: ["/task-list-screen.jpg", "/detail-view.jpg", "/settings-screen.png"],
     liveUrl: "#",
     githubUrl: "#",
+    type: "web",
+  },
+  "isometric-room": {
+    title: "3D Isometric Room",
+    tagline: "A detailed isometric room scene with lighting and textures",
+    description:
+      "This isometric room showcases advanced 3D modeling techniques with carefully crafted lighting and realistic material textures. The scene demonstrates attention to detail in architecture, furniture placement, and ambient lighting setup.",
+    image: "/3d-isometric-room.jpg",
+    videoUrl: "/videos/isometric-room-render.mp4",
+    downloadUrl: "/downloads/isometric-room.blend",
+    type: "3d",
   },
 }
 
@@ -69,6 +56,69 @@ export default function ProjectDetail({ params }: { params: { id: string } }) {
             <Link href="/projects">
               <Button>Back to Projects</Button>
             </Link>
+          </div>
+        </main>
+        <Footer />
+      </div>
+    )
+  }
+
+  if (project.type === "3d") {
+    return (
+      <div className="min-h-screen flex flex-col">
+        <Header />
+        <main className="flex-1">
+          {/* Hero Image */}
+          <div className="w-full h-96 md:h-[500px] bg-muted overflow-hidden">
+            <img src={project.image || "/placeholder.svg"} alt={project.title} className="w-full h-full object-cover" />
+          </div>
+
+          {/* Content */}
+          <div className="container-max py-16 md:py-24">
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
+              {/* Main Content */}
+              <div className="lg:col-span-2 space-y-12">
+                {/* Title */}
+                <div className="space-y-4">
+                  <h1 className="text-5xl md:text-6xl font-bold">{project.title}</h1>
+                  <p className="text-xl text-muted-foreground">{project.tagline}</p>
+                </div>
+
+                {/* Description */}
+                <div>
+                  <h2 className="text-2xl font-bold mb-3">About</h2>
+                  <p className="text-lg text-muted-foreground leading-relaxed">{project.description}</p>
+                </div>
+
+                {/* Video Preview */}
+                <div className="space-y-4">
+                  <h2 className="text-2xl font-bold">Render Preview</h2>
+                  <div className="aspect-video bg-black rounded-2xl overflow-hidden">
+                    <video src={project.videoUrl} controls className="w-full h-full object-cover" preload="metadata" />
+                  </div>
+                </div>
+
+                {/* Download */}
+                <div>
+                  <a href={project.downloadUrl} download>
+                    <Button className="w-full bg-foreground text-background hover:bg-foreground/90 rounded-2xl py-6 text-base">
+                      Download .blend File
+                    </Button>
+                  </a>
+                </div>
+              </div>
+
+              {/* Sidebar */}
+              <div className="space-y-8">
+                <div className="divider" />
+
+                <Link href="/projects">
+                  <Button variant="outline" className="w-full rounded-2xl border-foreground bg-transparent">
+                    Back to Projects
+                  </Button>
+                </Link>
+              </div>
+            </div>
           </div>
         </main>
         <Footer />

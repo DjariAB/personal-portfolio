@@ -14,10 +14,6 @@ export default function Home() {
 
           {/* Hero Section */}
           <div className="space-y-6">
-          <h1 className="text-5xl md:text-7xl font-mono font-bold tracking-tight leading-tight">
-              Djari <br />
-              Abdelbasset
-            </h1>
             <h1 className="text-5xl md:text-7xl font-mono font-bold tracking-tight leading-tight">
               Designer &<br />
               Developer
