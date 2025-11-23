@@ -35,9 +35,9 @@ const projectDetails: Record<string, any> = {
     title: "3D Isometric Room",
     tagline: "A detailed isometric room scene with lighting and textures",
     description:
-      "This isometric room showcases advanced 3D modeling techniques with carefully crafted lighting and realistic material textures. The scene demonstrates attention to detail in architecture, furniture placement, and ambient lighting setup.",
-    image: "/3d-isometric-room.jpg",
-    videoUrl: "/videos/isometric-room-render.mp4",
+      "This isometric room showcases advanced 3D modeling techniques with carefully crafted lighting and realistic material textures. The scene features a modern bedroom workspace with professional lighting setup, wooden flooring, and thoughtfully placed furniture including a desk with dual monitors, comfortable bed, storage units, and ambient lighting elements.",
+    image: "/images/rendered-20room.png",
+    videoUrl: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/edited%20export-TB1DkMO5teM8j3ScaKkOb2GEy9jNaf.mp4",
     downloadUrl: "/downloads/isometric-room.blend",
     type: "3d",
   },
