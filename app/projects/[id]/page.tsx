@@ -60,7 +60,7 @@ const projectDetails: Record<string, any> = {
     description:
       "This interactive 3D room allows you to explore a detailed 3D environment in real-time. Built with React Three Fiber and Three.js, the scene features realistic lighting, materials, and interactive camera controls. Rotate, zoom, and pan to view the room from any angle.",
     image: "/images/interactive-3d-room-thumbnail.png",
-    modelUrl: "/models/room.glb",
+    modelUrl: "/models/isometric%20room.glb",
     type: "3d-interactive",
   },
 }
