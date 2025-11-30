@@ -1,7 +1,20 @@
+"use client"
+
 import { Button } from "@/components/ui/button"
 import Header from "@/components/header"
 import Footer from "@/components/footer"
 import Link from "next/link"
+import dynamic from "next/dynamic"
+import { Suspense } from "react"
+
+const ThreeDViewer = dynamic(() => import("@/components/3d-viewer"), {
+  ssr: false,
+  loading: () => (
+    <div className="w-full h-96 md:h-[500px] bg-muted flex items-center justify-center rounded-2xl">
+      <p className="text-muted-foreground">Loading 3D scene...</p>
+    </div>
+  ),
+})
 
 const projectDetails: Record<string, any> = {
   "ecommerce-platform": {
@@ -41,6 +54,15 @@ const projectDetails: Record<string, any> = {
     downloadUrl: "/downloads/isometric-room.blend",
     type: "3d",
   },
+  "interactive-3d-room": {
+    title: "Interactive 3D Room",
+    tagline: "A fully interactive 3D room model powered by React Three Fiber",
+    description:
+      "This interactive 3D room allows you to explore a detailed 3D environment in real-time. Built with React Three Fiber and Three.js, the scene features realistic lighting, materials, and interactive camera controls. Rotate, zoom, and pan to view the room from any angle.",
+    image: "/images/interactive-3d-room-thumbnail.png",
+    modelUrl: "/models/room.glb",
+    type: "3d-interactive",
+  },
 }
 
 export default function ProjectDetail({ params }: { params: { id: string } }) {
@@ -56,6 +78,70 @@ export default function ProjectDetail({ params }: { params: { id: string } }) {
             <Link href="/projects">
               <Button>Back to Projects</Button>
             </Link>
+          </div>
+        </main>
+        <Footer />
+      </div>
+    )
+  }
+
+  if (project.type === "3d-interactive") {
+    return (
+      <div className="min-h-screen flex flex-col">
+        <Header />
+        <main className="flex-1">
+          {/* 3D Viewer */}
+          <div className="w-full h-96 md:h-[600px] bg-muted">
+            <Suspense fallback={<div className="w-full h-full flex items-center justify-center">Loading...</div>}>
+              <ThreeDViewer modelUrl={project.modelUrl} />
+            </Suspense>
+          </div>
+
+          {/* Content */}
+          <div className="container-max py-16 md:py-24">
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
+              {/* Main Content */}
+              <div className="lg:col-span-2 space-y-12">
+                {/* Title */}
+                <div className="space-y-4">
+                  <h1 className="text-5xl md:text-6xl font-bold">{project.title}</h1>
+                  <p className="text-xl text-muted-foreground">{project.tagline}</p>
+                </div>
+
+                {/* Description */}
+                <div>
+                  <h2 className="text-2xl font-bold mb-3">About</h2>
+                  <p className="text-lg text-muted-foreground leading-relaxed">{project.description}</p>
+                </div>
+
+                {/* Controls Info */}
+                <div>
+                  <h2 className="text-2xl font-bold mb-3">Controls</h2>
+                  <ul className="space-y-2 text-lg text-muted-foreground">
+                    <li>
+                      • <strong>Drag</strong> to rotate the view
+                    </li>
+                    <li>
+                      • <strong>Scroll</strong> to zoom in and out
+                    </li>
+                    <li>
+                      • <strong>Right-click drag</strong> to pan the camera
+                    </li>
+                  </ul>
+                </div>
+              </div>
+
+              {/* Sidebar */}
+              <div className="space-y-8">
+                <div className="divider" />
+
+                <Link href="/projects">
+                  <Button variant="outline" className="w-full rounded-2xl border-foreground bg-transparent">
+                    Back to Projects
+                  </Button>
+                </Link>
+              </div>
+            </div>
           </div>
         </main>
         <Footer />

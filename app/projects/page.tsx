@@ -27,6 +27,12 @@ const blenderProjects = [
     description: "A detailed isometric room scene with lighting and textures",
     image: "/3d-isometric-room.jpg",
   },
+  {
+    id: "interactive-3d-room",
+    title: "Interactive 3D Room",
+    description: "An interactive 3D room model created with Three.js and React Three Fiber",
+    image: "/3d-interactive-room.jpg",
+  },
 ]
 
 export default function Projects() {
