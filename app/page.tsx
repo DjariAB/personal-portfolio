@@ -15,9 +15,10 @@ export default function Home() {
           {/* Hero Section */}
           <div className="space-y-6">
             <h1 className="text-5xl md:text-7xl font-mono font-bold tracking-tight leading-tight">
-              Designer &<br />
-              Developer
+              Djari<br />
+              Abdelbasset
             </h1>
+            <h6 className="text-l md:text-l font-mono tracking-tight leading-tight">Designer & Developer</h6>
             <p className="text-lg md:text-xl text-muted-foreground max-w-2xl font-mono leading-relaxed">
               Crafting minimal, accessible digital experiences with thoughtful design and robust engineering.
             </p>
